@@ -7,7 +7,6 @@ import random
 
 max_chars = 13
 chosen_chars = []
-file = open("lol.txt", "w")
 
 def view():
     k = chosen_chars
@@ -20,18 +19,20 @@ def make_char():
     else:
         chosen_chars.append(a)
         print("success!")
+
 def print_to_file():
+    with open("lol.txt", "w") as file:
         file.write(str(sorted(chosen_chars)))
 
-#normal questioning
+# normal questioning
 while True:
-    cmd = input("select option: \n 1. 'view' for all entries \n 2. 'make_char' for new char")
-    if  cmd == "view" or "get_char":
+    cmd = input("select option: \n 1. 'view' for all entries \n 2. 'new' for new char \n 3. 'print' for printing onto txt\n")
+    if cmd == "view" or cmd == "new" or cmd == "print":
         if cmd == "view":
             view()
-        elif cmd == "make_char":
+        elif cmd == "new":
             make_char()
-        elif cmd == "print":
+        else:
             print_to_file()
     else:
         print("pls check for correct spelling or enter a valid command!")
